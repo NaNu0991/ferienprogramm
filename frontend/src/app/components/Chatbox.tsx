@@ -1,7 +1,7 @@
 'use client'
 
-import { useState, useEffect, useRef, FormEvent, ChangeEvent } from "react";
-import axios, { AxiosResponse } from "axios";
+import {useState, useEffect, useRef, FormEvent, ChangeEvent} from "react";
+import axios, {AxiosResponse} from "axios";
 
 interface Message {
     id: number;
@@ -11,7 +11,7 @@ interface Message {
 
 export default function Chatbox() {
     const [messages, setMessages] = useState<Message[]>([
-        { id: 1, text: "Willkommen im KI-Chat!", sender: 'ai' },
+        {id: 1, text: "Willkommen im KI-Chat!", sender: 'ai'},
     ]);
     const containerRef = useRef<HTMLDivElement>(null);
     const [input, setInput] = useState<string>("");
@@ -28,7 +28,7 @@ export default function Chatbox() {
 
     const addAiMessageWithTyping = (fullText: string) => {
         const id = messages.length + 2;
-        setMessages(prev => [...prev, { id, text: '', sender: 'ai' }]);
+        setMessages(prev => [...prev, {id, text: '', sender: 'ai'}]);
 
 
         let index = 0;
@@ -37,7 +37,7 @@ export default function Chatbox() {
             setMessages(prev => {
                 return prev.map(msg => {
                     if (msg.id === id) {
-                        return { ...msg, text: fullText.slice(0, index) };
+                        return {...msg, text: fullText.slice(0, index)};
                     }
                     return msg;
                 });
@@ -57,26 +57,17 @@ export default function Chatbox() {
         setLoading(true);
 
         setMessages(prev => {
-            const newMessage: Message = { id: prev.length + 1, text: input, sender: "user" };
+            const newMessage: Message = {id: prev.length + 1, text: input, sender: "user"};
             return [...prev, newMessage];
         });
 
-        try {
-            const response: AxiosResponse<string> = await axios.get(
-                "/api/chat",
-                { params: { userInput: JSON.stringify(input.trim()) } }
-            );
+        const response: AxiosResponse<string> = await axios.get(
+            "/api/chat",
+            {params: {userInput: JSON.stringify(input.trim())}}
+        );
 
-            addAiMessageWithTyping(response.data);
-            setInput("");
-
-        } catch (error) {
-            setMessages(prev => {
-                const newMessage: Message = { id: prev.length + 1, text: 'Fehler beim Abrufen der Antwort', sender: "ai" };
-                return [...prev, newMessage];
-            });
-            setLoading(false);
-        }
+        addAiMessageWithTyping(response.data);
+        setInput("");
     };
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -144,7 +135,7 @@ export default function Chatbox() {
 
             <form
                 onSubmit={handleSend}
-                style={{ display: "flex", padding: 10, borderTop: "1px solid #eee" }}
+                style={{display: "flex", padding: 10, borderTop: "1px solid #eee"}}
             >
                 <input
                     type="text"
