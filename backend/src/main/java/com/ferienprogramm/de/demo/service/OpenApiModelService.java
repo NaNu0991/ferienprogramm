@@ -24,6 +24,9 @@ public class OpenApiModelService {
 
 
     public String getChatCompletion(String userInput) {
+
+
+
         ChatResponse response = chatModel.call(
                 new Prompt(
                         "Antworte so, wie in einer Konversation üblich: " + userInput,

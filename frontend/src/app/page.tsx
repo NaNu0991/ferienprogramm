@@ -1,7 +1,7 @@
 import styles from './page.module.css';
 import Container from "@mui/material/Container";
 import StartPage from "@/app/start/page";
-import Chatbox from "@/app/components/Chatbox";
+import ChatboxWrapper from "@/app/components/Chatbox/ChatboxWrapper";
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
           <main className={styles['main']}>
               <Container style={{ backgroundColor: "white"}}>
                 <StartPage/>
-                  <Chatbox/>
+                  <ChatboxWrapper />
               </Container>
           </main>
       </div>

@@ -37,3 +37,48 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Projektname
+
+Dieses Projekt nutzt **Storybook** zur Entwicklung und Dokumentation von Benutzeroberflächenkomponenten.
+
+---
+
+## Was ist Storybook?
+
+Storybook ist ein Tool, mit dem UI-Komponenten isoliert entwickelt, getestet und dokumentiert werden können. Es ermöglicht Entwicklern, verschiedene Zustände von Komponenten in einer eigenen Umgebung zu visualisieren, ohne die gesamte Anwendung starten zu müssen.
+
+---
+
+## Storybook im Projekt
+
+In diesem Projekt sind alle UI-Komponenten mit Storybook dokumentiert. Dadurch kann das Team Komponenten übersichtlich ansehen und testen.
+
+---
+
+## Storybook starten
+
+Um Storybook lokal zu starten, gehen Sie wie folgt vor:
+
+1. Abhängigkeiten installieren:
+   npm install
+
+2. Storybook starten:
+   npm run storybook
+
+3. Öffnen Sie im Browser die Adresse:
+   http://localhost:6006
+
+Hier sehen Sie die Benutzeroberfläche von Storybook mit allen verfügbaren Komponenten und deren Varianten.
+
+Das Ergebnis befindet sich im Ordner `storybook-static`.
+
+---
+
+## Weiterführende Informationen
+
+Weitere Details finden Sie in der offiziellen Storybook-Dokumentation: https://storybook.js.org
+
+---
+
+Diese README hilft dabei, den Einstieg in die Nutzung von Storybook im Projekt zu erleichtern.

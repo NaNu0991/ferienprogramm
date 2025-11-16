@@ -27,7 +27,18 @@ export function Navbar() {
 
     return (
         <>
-            <AppBar position="static" style={{ backgroundColor: 'grey', boxShadow: 'none' }}>
+            <AppBar
+                position="sticky"
+                elevation={6}
+                sx={{
+                    top: 0,
+                    bgcolor: '#aedff7',
+                    color: '#045a8d',
+                    borderRadius: '0 0 16px 16px',
+                    px: { xs: 2, md: 4 },
+                    zIndex: (theme) => theme.zIndex.drawer + 1, // sicher über Drawer und anderem Content
+                }}
+            >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -37,18 +48,43 @@ export function Navbar() {
                         sx={{ mr: 2, display: { xs: 'flex', md: 'none' } }}
                         onClick={() => setDrawerOpen(true)}
                     >
-                        <MenuIcon />
+                        <MenuIcon fontSize="large" />
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        Geltendorfer Ferienprogramm
+
+                    <Typography
+                        variant="h5"
+                        component="div"
+                        sx={{
+                            flexGrow: 1,
+                            fontFamily: "'Comic Sans MS', cursive, sans-serif", // spielerische Schrift
+                            fontWeight: 'bold',
+                            letterSpacing: 1,
+                        }}
+                    >
+                        Gemeinde Ferienprogramm
                     </Typography>
-                    {menuItems.map(item => (
+
+                    {menuItems.map((item) => (
                         <Button
                             key={item.text}
                             href={item.href}
                             variant="contained"
-                            color="inherit"
-                            sx={{ display: { xs: 'none', md: 'inline-flex' }, ml: 1, color: 'black' }}
+                            color="primary"
+                            sx={{
+                                display: { xs: 'none', md: 'inline-flex' },
+                                ml: 2,
+                                backgroundColor: '#3f51b5', // Indigo-Blau als Hintergrund
+                                color: '#ffffff',           // Weißer Text für klaren Kontrast
+                                borderRadius: 2,
+                                fontWeight: 600,
+                                fontSize: '1rem',
+                                textTransform: 'none',
+                                boxShadow: 'none',
+                                '&:hover': {
+                                    backgroundColor: '#303f9f', // Dunkleres Indigo beim Hover
+                                    boxShadow: 'none',
+                                },
+                            }}
                         >
                             {item.text}
                         </Button>
@@ -56,19 +92,19 @@ export function Navbar() {
                 </Toolbar>
             </AppBar>
 
-            {/* Drawer für mobile Navigation */}
-            <Drawer
-                anchor="left"
-                open={drawerOpen}
-                onClose={() => setDrawerOpen(false)}
-            >
-                <List sx={{ width: 220 }}>
+            <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                <List sx={{ width: 250, bgcolor: '#fce4ec' /* zartes Rosa */ }}>
                     {menuItems.map((item) => (
                         <ListItem key={item.text} disablePadding>
                             <ListItemButton
                                 component={Link}
                                 href={item.href}
                                 onClick={() => setDrawerOpen(false)}
+                                sx={{
+                                    color: '#3e2723',
+                                    fontWeight: 600,
+                                    fontFamily: "'Comic Sans MS', cursive, sans-serif",
+                                }}
                             >
                                 <ListItemText primary={item.text} />
                             </ListItemButton>
